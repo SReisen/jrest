@@ -9,21 +9,29 @@ const changed = require('gulp-changed'),
     minifyhtml = require ('gulp-minify-html'),
     autoprefixer = require ('gulp-autoprefixer'),
     sass = require('gulp-sass'),
+    rename = require('gulp-rename'),
     minifyCSS = require ('gulp-minify-css');
 
 gulp.task('scripts', function() {
      return gulp.src('js/*.js')
             .pipe(concat('all.js'))
             .pipe(gulp.dest('dist'))
-            .pipe(rename('all.min.js'))
             .pipe(uglify())
+            .pipe(rename("all-min.js"))
             .pipe(gulp.dest('dist'));
 });
 
 gulp.task('sass', function() {
     return gulp.src('scss/*.scss')
         .pipe(sass())
-        .pipe(gulp.dest('css'));
+        .pipe(autoprefixer({
+            browsers: ['last 2 versions'],
+            cascade: false
+        }))
+        .pipe(gulp.dest('css'))
+        .pipe(minifyCSS())
+        .pipe(rename("style-min.css"))
+        .pipe(gulp.dest('css'))    
 });
 
 gulp.task('watch', function() {

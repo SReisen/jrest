@@ -1,0 +1,17 @@
+$fonts: Helvetica, sans-serif;
+
+body{
+    font: $fonts;
+    color: black
+}
+ .header{
+     width: 100%;
+     margin: 0;
+
+     div{
+         border-radius: 5px;
+         border-color: #222;
+         display: grid;
+         column-gap: 10px;
+     }
+ }
