@@ -1,7 +1,7 @@
-var gulp = require('gulp');
+const gulp = require('gulp');
 
 // Plugins
-var changed = require('gulp-changed'),
+const changed = require('gulp-changed'),
     jshint = require('gulp-jshint'),
     concat = require('gulp-concat');
     uglify = require('gulp-uglify'),
